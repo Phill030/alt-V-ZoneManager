@@ -39,6 +39,6 @@ alt.emit("ZoneManager:GetZoneByIndex",index);
 
 # Known Bugs:
 * zoneName is sometimes undefined when entering/leaving a zone
-* dimension is 0 everytime, because there is no clientside getter
+* dimension is 0 everytime, because there is no clientside getter but this will be fixed in the near future
 
 ###### made with [❤](https://www.youtube.com/watch?v=XWFttsqzfcg) by [@Phill030](https://www.youtube.com/watch?v=f0U38Nx4oe4)
