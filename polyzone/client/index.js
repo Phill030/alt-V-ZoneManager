@@ -1,6 +1,3 @@
-///<reference types="@altv/types-client" />
-///<reference types="@altv/types-natives" />
-
 import * as alt from 'alt-client';
 import * as native from 'natives';
 
@@ -1129,8 +1126,8 @@ alt.on("ZoneManager:IsZoneRegistered",(zoneName, dimension) => alt.emit("ZoneMan
 alt.on("ZoneManager:GetZoneByName",(zoneName,dimension) => alt.emit("ZoneManager:GetZoneByName:Callback",GetZoneByName(zoneName, dimension)));
 alt.on("ZoneManager:GetZoneByIndex",(zoneIndex) => alt.emit("ZoneManager:GetZoneByIndex:Callback",GetZoneByIndex(zoneIndex)));
 
-alt.on("ZoneManager:UnregisterZone",(zoneName, dimension) => alt.emit("ZoneManager:UnregisterZone:Callback",UnregisterZone(zoneName, dimension)));
 alt.on("ZoneManager:RegisterZone",(vectors, height, zoneName, type, dimension) => alt.emit("ZoneManager:RegisterZone:Callback",RegisterZone(vectors, height, zoneName, type, dimension)));
+alt.on("ZoneManager:UnregisterZone",(zoneName, dimension) => alt.emit("ZoneManager:UnregisterZone:Callback",UnregisterZone(zoneName, dimension)));
 
 alt.on("ZoneManager:DrawZoneBy2",(startPos, endPos, r, g, b, a) => alt.emit("ZoneManager:DrawZoneBy2:Callback",DrawZoneBy2(startPos, endPos, r, g, b, a)));
 alt.on("ZoneManager:DrawZoneBy4",(vectors, height, r, g, b, a) => alt.emit("ZoneManager:DrawZoneBy4:Callback",DrawZoneBy4(vectors, height, r, g, b, a)));
