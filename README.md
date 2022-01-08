@@ -36,7 +36,30 @@ alt.emit("ZoneManager:IsPointInZone",point, zoneName, dimension);
 alt.emit("ZoneManager:GetZoneByName",name,dimension);
 alt.emit("ZoneManager:GetZoneByIndex",index);
 ```
-
+# Callbacks:
+### Every function has a callback, which gets triggered when you create or delete something
+* IsZoneRegistered returns: [bool]
+* GetZoneByName returns: [ZoneObject]
+* GetZoneByIndex returns: [ZoneObject]
+* RegisterZone returns: [ZoneObject]
+* UnregisterZone returns: [true if deleted or false if invalid]
+* DrawZoneBy2 returns: [IntervalId]
+* DrawZoneBy4 returns: [IntervalId]
+* DrawZoneBy6 returns: [IntervalId]
+* DrawZoneByN returns: [IntervalId]
+* IsPointInZone returns [bool]
+```js
+alt.on("ZoneManager:IsZoneRegistered:Callback")
+alt.on("ZoneManager:GetZoneByName:Callback")
+alt.on("ZoneManager:GetZoneByIndex:Callback")
+alt.on("ZoneManager:RegisterZone:Callback")
+alt.on("ZoneManager:UnregisterZone:Callback")
+alt.on("ZoneManager:DrawZoneBy2:Callback")
+alt.on("ZoneManager:DrawZoneBy4:Callback")
+alt.on("ZoneManager:DrawZoneBy6:Callback")
+alt.on("ZoneManager:DrawZoneByN:Callback")
+alt.on("ZoneManager:IsPointInZone:Callback")
+```
 # Known Bugs:
 * zoneName is sometimes undefined when entering/leaving a zone
 * dimension is 0 everytime, because there is no clientside getter but this will be fixed in the near future
