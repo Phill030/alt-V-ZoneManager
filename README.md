@@ -25,6 +25,10 @@ ZoneType 3 = 6PointZone,
 ZoneType 4 = NPointZone
 */
 ```
+Example: 
+```js
+alt.emit("ZoneManager:RegisterZone",[new alt.Vector3(0,0,70), new alt.Vector3(5,5,80)],10,0,1,0);
+```
 
 ### Check if a point is in the zone:
 ```js
