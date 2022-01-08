@@ -18,6 +18,12 @@ alt.emit("ZoneManager:DrawZoneByN",vectors, height, r, g, b, a);
 ```js
 alt.emit("ZoneManager:RegisterZone",vectors, height, zoneName, type, dimension);
 alt.emit("ZoneManager:UnregisterZone",zoneName, dimension);
+/*
+ZoneType 1 = 2PointZone,
+ZoneType 2 = 4PointZone,
+ZoneType 3 = 6PointZone,
+ZoneType 4 = NPointZone
+*/
 ```
 
 ### Check if a point is in the zone:
