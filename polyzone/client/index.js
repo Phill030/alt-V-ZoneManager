@@ -14,7 +14,7 @@ export const types = {
 
 export function IsZoneRegistered(zoneName, dimension) {
     var ClonedZoneList = JSON.parse(JSON.stringify(Registered))
-    for(i in ClonedZoneList)
+    for(let i in ClonedZoneList)
     {
         var ZoneManagerObject = ClonedZoneList[i];
         if(ZoneManagerObject.zoneName == zoneName && ZoneManagerObject.dimension == dimension) return true;
@@ -23,7 +23,7 @@ export function IsZoneRegistered(zoneName, dimension) {
 }
 
 export function GetZoneByName(zoneName, dimension) {
-    for(i in Registered)
+    for(let i in Registered)
     {
         var ZoneManagerObject = Registered[i];
         if(ZoneManagerObject.zoneName == zoneName && ZoneManagerObject.dimension == dimension) return ZoneManagerObject;
@@ -36,7 +36,7 @@ export function GetZoneByIndex(zoneZindex) {
 }
 
 export function UnregisterZone(zoneName, dimension) {
-    for(i in Registered)
+    for(let i in Registered)
     {
         var ZoneManagerObject = Registered[i];
         if(ZoneManagerObject.zoneName == zoneName && ZoneManagerObject.dimension == dimension)
@@ -49,7 +49,7 @@ export function UnregisterZone(zoneName, dimension) {
 }
 
 export function RegisterZone(Vectors, height, zoneName, type, dimension) {
-    for(i in Registered)
+    for(let i in Registered)
     {
         var ZoneManagerObject = Registered[i];
         if(ZoneManagerObject.zoneName == zoneName && ZoneManagerObject.dimension == dimension) return undefined;
@@ -201,7 +201,7 @@ export function DrawZoneBy6(Vectors, height, r=255, g=0, b=0, a=255) {
 export function DrawZoneByN(Vectors, height, r=255, g=0, b=0, a=255) {
     return alt.setInterval(() => {
         var TotalLengthOfVectors = parseInt(Vectors.length, 10);
-        for(i in Vectors)
+        for(let i in Vectors)
         {
             if(i != (TotalLengthOfVectors - 1))
             {
@@ -235,13 +235,13 @@ export function DrawZoneByN(Vectors, height, r=255, g=0, b=0, a=255) {
 }
 
 export function IsPointInZone(point, zoneName, dimension) {
-    for(i in Registered)
+    for(let i in Registered)
     {
         var ZoneObject = Registered[i];
         if(ZoneObject.zoneName == zoneName && ZoneObject.dimension == dimension)
         {
             var ZoneType = ZoneObject.type;
-            if(ZoneType == type["NPointZone"])
+            if(ZoneType == types["NPointZone"])
             {
                 var PointVector = point;
                 var ZoneHeight = ZoneObject.height;
@@ -250,7 +250,7 @@ export function IsPointInZone(point, zoneName, dimension) {
                 var pointInside = [PointVector.x, PointVector.y];
                 var ShapeCoords = [];
 
-                for(i in Vectors)
+                for(let i in Vectors)
                 {
                     var VectorObject = Vectors[i];
 
@@ -341,7 +341,6 @@ export function IsPointInZone(point, zoneName, dimension) {
             }
             else if(ZoneType == types["2PointZone"])
             {
-                console.log("XXXX");
                 var FirstVector = ZoneObject.firstvec;
                 var SecondVector = ZoneObject.secondvec;
                 var PointVector = ZoneManager_Player.pos;
@@ -855,7 +854,7 @@ alt.everyTick(() => {
             var pointInside = [PointVector.x, PointVector.y];
             var ShapeCoords = [];
 
-            for(i in Vectors)
+            for(let i in Vectors)
             {
                 var VectorObject = Vectors[i];
 
@@ -904,7 +903,7 @@ alt.everyTick(() => {
 
 function GetLowestNumberOfArray(numberArray) {
     var LastLowestNumber = numberArray[0];
-    for(i in numberArray)
+    for(let i in numberArray)
     {
         var LowNumber = numberArray[i];
         if(LowNumber < LastLowestNumber) LastLowestNumber = LowNumber;
@@ -915,7 +914,7 @@ function GetLowestNumberOfArray(numberArray) {
 
 function GetHighestNumberOfArray(numberArray) {
     var LastHighestNumber = numberArray[0];
-    for(i in numberArray)
+    for(let i in numberArray)
     {
         var HighNumber = numberArray[i];
         if(HighNumber > LastHighestNumber) LastHighestNumber = HighNumber;
@@ -941,7 +940,7 @@ function getAreaOf2DPolygon(points) {
     var sumX = parseInt(0, 10);
     var sumY = parseInt(0, 10);
     
-    for(i in points)
+    for(let i in points)
     {
         if(i < points.length - 1)
         {
@@ -975,7 +974,7 @@ function getCenter(points, area) {
 
     var centerXSum = 0.0;
     var centerYSum = 0.0;
-    for(i in points)
+    for(let i in points)
     {
         if(i < points.length - 1)
         {
@@ -1009,7 +1008,7 @@ function rotateByAngle(points, rotatePointObject, angle) {
     var rotateMatrix = [[Math.cos(angle), -Math.sin(angle)], [Math.sin(angle), Math.cos(angle)]]
     var finalPoints = [];
 
-    for(i in points)
+    for(let i in points)
     {
         var fPoints = multiplyMatrices(rotateMatrix, [[points[i][0] - rotatePointObject.x], [points[i][1] - rotatePointObject.y]])
         var arrayToAdd = [parseFloat(fPoints[0][0]) + rotatePointObject.x, parseFloat(fPoints[1][0]) + rotatePointObject.y]
@@ -1026,7 +1025,7 @@ function centerRotateByAngle(points, angle) {
     var shapeCenteroid = getCenter(points, getAreaOf2DPolygon(points));
     var finalPoints = [];
 
-    for(i in points)
+    for(let i in points)
     {
         var fPoints = multiplyMatrices(rotateMatrix, [[points[i][0] - shapeCenteroid.x], [points[i][1] - shapeCenteroid.y]])
         var arrayToAdd = [parseFloat(fPoints[0][0]) + shapeCenteroid.x, parseFloat(fPoints[1][0]) + shapeCenteroid.y]
@@ -1063,10 +1062,6 @@ function multiplyMatrices(a, b) {
     }
     else throw new Error('Arguments must 2 dimensional arrays.');
     
-}
-
-function dtr(degree) {
-  return degree * (Math.PI/180);
 }
 
 
